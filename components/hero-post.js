@@ -2,6 +2,7 @@ import Avatar from '../components/avatar'
 import Date from '../components/date'
 import CoverImage from '../components/cover-image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function HeroPost({
   title,
@@ -13,20 +14,26 @@ export default function HeroPost({
 }) {
   return (
     <section>
-      <div className="mb-8 md:mb-16">
+      <motion.div
+        className="mb-8 md:mb-16"
+        layoutId={`image-${title}`}
+        key={`image-${title}`}>
         <CoverImage
           title={title}
           responsiveImage={coverImage.responsiveImage}
           slug={slug}
         />
-      </div>
+      </motion.div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+          <motion.h3
+            className="mb-4 text-4xl lg:text-6xl leading-tight"
+            layoutId={`title-${title}`}
+            key={`title-${title}`}>
             <Link as={`/posts/${slug}`} href="/posts/[slug]">
               <a className="hover:underline">{title}</a>
             </Link>
-          </h3>
+          </motion.h3>
           <div className="mb-4 md:mb-0 text-lg">
             <Date dateString={date} />
           </div>
