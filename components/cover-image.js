@@ -12,6 +12,7 @@ export default function CoverImage({ title, responsiveImage, slug }) {
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
+      lazyLoad={false}
     />
   )
   return (
